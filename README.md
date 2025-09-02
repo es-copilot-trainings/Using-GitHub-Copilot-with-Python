@@ -25,7 +25,7 @@ By the end of this module, you'll acquire the skills to be able to:
 
 **Right click the following link to open the repository in a new tab**
  
-[Clone this repository](https://github.com/MicrosoftDocs/mslearn-advanced-copilot)
+[Clone this repository](https://github.com/es-copilot-trainings/python-copilot)
 
 The API already has a single endpoint to generate a token. Let's update the API by adding a new endpoint that accepts text and returns a list of tokens.
 
