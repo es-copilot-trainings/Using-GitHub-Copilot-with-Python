@@ -1,58 +1,97 @@
-# Apply advanced GitHub Copilot techniques
-Discover new ways to leverage advanced GitHub Copilot techniques within a Python repository to implement an interactive HTML form and an Application Programming Interface (API) endpoint. 
-Gain more practical experience by using this repository that contains a Python Web Application that hosts a Travel Weather API.
+# Travel Weather API
 
-[![Powered by Awesome Copilot](https://img.shields.io/badge/Powered_by-Awesome_Copilot-blue?logo=githubcopilot)](https://aka.ms/awesome-github-copilot)
+A FastAPI-powered REST API that provides historical weather data for various cities around the world. This application serves as a learning project for GitHub Copilot techniques and modern Python web development.
 
-## 💪🏽 Exercise
-The current API is not exposing country/{country} which needs to be implemented to list cities. The route should allow only GET HTTP requests with a JSON response providing information from the historical high and low for that country, city, and given month.
+## API Overview
 
-As with any implementation, this addition should include at least one test function to work with the pytest runner and test framework. 
+This Weather API provides access to historical temperature data (high and low) for major cities across different countries. The data includes monthly averages for the entire year.
 
-### 🛠 Step 1: Add a new route 
-On our first exercise we will create a new route in our API. Go to the main.py file, and by using the inline chat with the following command `ctrl` + `i` (on Windows) or  `cmd` + `i`(on Mac) ask GitHub Copilot to help you create a new API that shows you the cities of a country. 
+## 🚀 API Endpoints
 
-`> Create a new route that exposes the cities of a country.`
+### Base URL
+When running locally: `http://127.0.0.1:8000`
 
+### Available Endpoints
 
-This prompt should give you something similar like this:
+| Method | Endpoint | Description | Response |
+|--------|----------|-------------|----------|
+| `GET` | `/` | Redirects to API documentation (`/docs`) | 301 Redirect |
+| `GET` | `/docs` | Interactive API documentation (Swagger UI) | HTML |
+| `GET` | `/countries` | List all available countries | Array of country names |
+| `GET` | `/countries/{country}/{city}/{month}` | Get temperature data for specific location and month | Temperature object with high/low |
 
+## 🛠️ Installation & Setup
 
-```python
-# Create a new route that exposes the cities of a country:
-@app.get('/countries/{country}')
-def cities(country: str):
-    return list(data[country].keys())
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package manager)
 
+### 1. Clone and Navigate
+```bash
+cd /path/to/Using-GitHub-Copilot-with-Python/app
 ```
-Note: Try your new route and refine your prompt until the result is as desired.
 
-### 🔎 Step 2: Create a test
-Now that you have created a new route, let's create a test with Copilot Chat for this route that uses Spain as the country. Remember to select your code and ask Copilot Chat to help you with this specific API that we just have created.
+### 2. Create Virtual Environment (Recommended)
+```bash
+python -m venv .venv
 
-`> /tests help me to create a new test for this route that uses Spain as the country.`
+# Activate virtual environment
+# On macOS/Linux:
+source .venv/bin/activate
 
-![Copilot Chat image example](./images/ideascopilot.png)
+# On Windows:
+.venv\Scripts\activate
+```
 
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-Once Copilot has helped you to create your test, try it. If this is not functioning as expected, feel free to share those details with Copilot in the chat. For example:
+The required packages include:
+- `fastapi==0.109.1` - Modern web framework
+- `uvicorn[standard]` - ASGI server
+- `pydantic` - Data validation
+- `httpx==0.25.0` - HTTP client for testing
+- `requests==2.32.0` - HTTP library
+- `pytest` - Testing framework
 
-`> This test is not quite right, it is not including cities that doesn't exist. Only Seville is part of the API.`
+## 🏃‍♂️ Running the Application
 
+### Development Server
+Start the FastAPI development server with auto-reload:
 
-It should give you another solution. Keep trying until you achieve the desired result.
+```bash
+uvicorn main:app --reload
+```
 
-### 🐍 Step 3: Use an agent to write the project
-During this step we will be using an agent (workspace) to write the project documentation on how to run this project. In the GitHub Copilot Chat, we will try the following prompt:
+Or with specific host and port:
+```bash
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
 
-`> @workspace help me to use an agent to write the project documentation on how to run it .`
+### Access the API
+- **API Documentation**: http://127.0.0.1:8000/docs
+- **Alternative Documentation**: http://127.0.0.1:8000/redoc
+- **API Base URL**: http://127.0.0.1:8000
 
-Finally, verify the new endpoint is working by trying it out by going to the `/docs` endpoint and confirming that the endpoint shows up.
+## 🧪 Testing
 
+Run the test suite using pytest:
 
-🚀 Congratulations, through the exercise, you haven't only used copilot to generate code but also done it in an interactive and fun way! You can use GitHub Copilot to not only generate code, but write documentation, test your applications and more.
+```bash
+pytest
+```
 
+For verbose output:
+```bash
+pytest -v
+```
 
+For coverage report:
+```bash
+pytest --cov=main
+```
 
 # Legal Notices
 
