@@ -28,7 +28,7 @@ When running locally: `http://127.0.0.1:8000`
 
 ### 1. Clone and Navigate
 ```bash
-cd /path/to/Using-GitHub-Copilot-with-Python/app
+cd /path/to/Using-GitHub-Copilot-with-Python
 ```
 
 ### 2. Create Virtual Environment (Recommended)
