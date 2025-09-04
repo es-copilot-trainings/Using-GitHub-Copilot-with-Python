@@ -25,7 +25,7 @@ By the end of this module, you'll acquire the skills to be able to:
 
 **Right click the following link to open the repository in a new tab**
  
-[Open App README](./APP-INSTRUCTIONS.MD)
+[Open App README](./APP-INSTRUCTIONS.md)
 
 The API already has a single endpoint to generate a token. Let's update the API by adding a new endpoint that accepts text and returns a list of tokens.
 
